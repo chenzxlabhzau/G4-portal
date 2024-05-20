@@ -1,0 +1,53 @@
+<div fxLayout="column" fxFill class="container">
+  <div class="column">
+    <div class="card" style="padding: 0">
+      <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		    Interaction between eG4s and SNP/eQTL
+	    </div>
+      <div class="card-body" style="text-align: justify">
+        <div class="row">
+          <div class="col-8" >
+              <p class="big" style="font-size: 16px">To systematically investigate the association between eG4s and disease-related regions, we determined the co-localization of eG4s with with non-redundant GWAS single-nucleotide polymorphism (SNP), GTEx expression quantitative trait loci (eQTLs), and cancer-related eQTLs.</p>
+          </div>
+          <div class="col-4" fxFlexAlign="center">
+            <img [src]="assets + '/imgs/esp.png'" class="d-block img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding: 0;margin-top: 30px">
+      <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		    Search
+	    </div>
+      <div class="card-body">
+        <div fxLayout="column">
+          <div class="col-12" >
+            <form fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap="5%">
+                <mat-form-field appearance="standard" class="example-full-width">
+                  <mat-label>Position, Phenotype, or SNP id</mat-label>
+                  <input matInput placeholder="eg. chr1:909,296-909,329 or Height" [formControl]="searchFormControl" type="text" />
+                </mat-form-field>
+              <button mat-raised-button (click)="search()" style="height: 36px;background-color: #d1e5f0">
+                Search
+              </button>
+            <button mat-raised-button [disabled]="downloading" (click)="download()" style="height: 36px;background-color: #d1e5f0">
+              Download
+            </button>
+            </form>
+          </div>
+          <mat-tab-group mat-align-tabs="start" [(selectedIndex)]="tabIndex" dynamicHeight>
+            <mat-tab *ngFor="let tab of eqtlTypes">
+              <ng-template mat-tab-label>{{ tab.show }}</ng-template>
+              <ng-template matTabContent>
+                <app-eqtl-table  [eqtlType]="tab.label" [query]="query"></app-eqtl-table>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

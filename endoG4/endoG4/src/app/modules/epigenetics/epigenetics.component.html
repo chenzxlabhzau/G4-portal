@@ -1,0 +1,103 @@
+<div fxLayout="column" fxFill class="container">
+  <div class="card" style="padding: 0">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Histone modification and chromatin accessibility
+    </div>
+    <div class="card-body" style="text-align: justify">
+      <div class="row">
+        <div class="col-8" >
+            <p class="big" style="font-size: 16px">To obtain an epigenetic landscape of eG4s across different human cell types, we computed the total proportion of eG4 bases annotated as each epigenetic state across all consolidated epigenomes (n = 127) from Roadmap. This page contains information on all the samples we used and allows the user to access information on epigenetic landscape at the eG4 location by sample id.</p>
+        </div>
+        <div class="col-4" fxFlexAlign="center">
+          <img style="margin-top: -15px" [src]="assets + '/imgs/epi.png'" class="d-block img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="padding: 0;margin-top: 30px">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Search
+    </div>
+    <div class="card-body">
+      <div fxLayout="column">
+        <div class="col-12" >
+          <form fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap="5%">
+            <mat-form-field appearance="standard" class="example-full-width" [color]="isLegalInput ? 'primary' : 'warn'">
+              <mat-label>Tissue or cell line</mat-label>
+              <input matInput placeholder="eg. E001 or HUES48" [formControl]="searchFormControl" type="text" />
+            </mat-form-field>
+            <button mat-raised-button (click)="search()" style="height: 36px;background-color: #d1e5f0">
+              Search
+            </button>
+            <button mat-raised-button [disabled]="downloading" (click)="download()" style="height: 36px;background-color: #d1e5f0">
+              Download
+            </button>
+          </form>
+        </div>
+        <div fxFlex class="not-float">
+          <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+            <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+              <mat-progress-bar mode="query"></mat-progress-bar>
+            </div>
+
+            <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+              <ng-container matColumnDef="Sample_id">
+                <mat-header-cell matTooltip="Epigenome ID in Roadmap" *matHeaderCellDef mat-sort-header>EID</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">
+                  <a [routerLink]="['/epigenetics-g4', regions.Sample_id]">{{regions.Sample_id}}</a>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="sample_name">
+                <mat-header-cell matTooltip="Standardized Epigenome name" *matHeaderCellDef mat-sort-header>Standardized name</mat-header-cell>
+                <mat-cell class="description-cell" *matCellDef="let regions">
+                  {{regions.sample_name}}
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Group">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Group</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">
+                  {{regions.Group}}
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="ANATOMY">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Anatomy</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">
+                  {{regions.ANATOMY}}
+                </mat-cell>
+              </ng-container>
+              <ng-container  matColumnDef="TYPE">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">
+                  {{regions.TYPE}}
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="AGE">
+                <mat-header-cell *matHeaderCellDef matTooltip="Post Birth in YEARS/ Fetal in GESTATIONAL WEEKS/CELL LINE CL" mat-sort-header>Age</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">
+                  {{regions.AGE}}
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="SEX">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Sex</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.SEX }}</mat-cell>
+              </ng-container>
+              <ng-container  matColumnDef="Under_seq">
+                <mat-header-cell matTooltip="-1: low sequencing depth for multiple marks; 0: moderate sequencing depth for some mark; 1: optimal sequencing depth for all marks" *matHeaderCellDef mat-sort-header>Under seq</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.Under_seq|number }}</mat-cell>
+              </ng-container>
+              <ng-container matTooltip="Quality rating based on NSC and RSC (Manually curated); 1: High; 0: Moderate (atleast 2 marks have suboptimal scores); -1: Low" matColumnDef="Quality_rating">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Quality rating</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.Quality_rating|number }}</mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+            <mat-paginator [length]="dataSource.resultLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

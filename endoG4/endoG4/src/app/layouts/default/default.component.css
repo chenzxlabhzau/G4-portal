@@ -1,0 +1,30 @@
+mat-progress-bar {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+mat-progress-bar:after {
+  content: ' ';
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loader 1.2s linear infinite;
+}
+.meu-head {
+  padding: 0;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+mat-card.meu-head {
+	box-shadow: 0 0 10px #999999;
+}
+

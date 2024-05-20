@@ -1,0 +1,14 @@
+.mat-card-title {
+  display: inline;
+  margin-left: -17px;
+  font-size: 20px;
+}
+.mat-card-header {
+  margin-bottom: 5px;
+}
+ol{
+  padding-left: 16px;
+}
+h3{
+  margin-bottom: 0;
+}

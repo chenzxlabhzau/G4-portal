@@ -1,0 +1,20 @@
+.mat-column-tf {
+  flex: 0 0 200px;
+}
+
+.mat-column-score {
+  flex: 0 0 130px;
+}
+.mat-column-tg_chr {
+  flex: 0 0 130px;
+}
+.mat-column-tg_start {
+  flex: 0 0 130px;
+}
+.mat-column-tg_end {
+  flex: 0 0 130px;
+}
+.mat-column-match_seq {
+  white-space: normal !important;
+  word-break: break-all;
+}

@@ -1,0 +1,18 @@
+<div class="card" style="padding: 0;margin-top: 30px">
+  <div class="card-header d-flex justify-content-between align-items-center" style="background-color:#d1e5f0;font-size: 17px">
+    Interaction between eG4s and SNP/eQTL
+    <button dropdownToggle class="btn p-0" type="button" aria-haspopup="true" (click)="exportTable()">
+      Download
+    </button>
+  </div>
+  <div class="card-body">
+  <div fxLayout="column">
+    <mat-tab-group mat-align-tabs="start" [(selectedIndex)]="tabIndex" dynamicHeight>
+      <mat-tab *ngFor="let tab of eqtlTypes; let i = index" [label]="tab.label">
+        <ng-template mat-tab-label>{{ tab.show }}</ng-template>
+          <app-eqtl-table [data]="data[i]" #eqtlTable [eqtlType]="tab.label"></app-eqtl-table>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  </div>
+</div>

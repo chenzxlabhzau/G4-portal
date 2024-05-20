@@ -1,0 +1,13 @@
+/*a.nav-link:hover {*/
+/*  background-color: bisque;*/
+/*}*/
+
+a.nav-link {
+  color: #434343;
+}
+a.navactive {
+  color: #6e92ff;
+}
+
+
+

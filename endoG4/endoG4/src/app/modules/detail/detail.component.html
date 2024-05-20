@@ -1,0 +1,37 @@
+<div fxLayout="column" fxFill class="container">
+  <section id="basic_info" fxLayout="column">
+    <div class="card" style="padding: 0">
+      <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		    eG4 information
+	    </div>
+      <div class="card-body">
+        <app-basic [g4info]="G4info"></app-basic>
+      </div>
+    </div>
+  </section>
+  <section id="sample"  fxLayout="column">
+    <app-sample [SampleData]="SampleData"></app-sample>
+  </section>
+  <section *ngIf="g_id.startsWith('HG4')" id="Epigenetics">
+    <app-epigenetics></app-epigenetics>
+  </section>
+  <section *ngIf="g_id.startsWith('HG4')" id="tf">
+    <div class="card" style="padding: 0;margin-top: 30px">
+      <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		    Regulatory network between transcription factors (TFs) and eG4s
+	    </div>
+      <div class="card-body">
+        <app-tf [tfRecord]="tfRecord"></app-tf>
+      </div>
+    </div>
+  </section>
+  <section id="enrichment"  fxLayout="column">
+    <app-enrichment></app-enrichment>
+  </section>
+  <section *ngIf="g_id.startsWith('HG4')" id="pathway">
+    <app-pathway [pathwayRecord]="pathwayRecord"></app-pathway>
+  </section>
+  <section *ngIf="snp_number>0" id="snp">
+    <app-snp [eqtl_cancer]="G4info.eqtl_cancer_number" [eqtl_gtex]="G4info.eqtl_gtex_number" [eqtl_gwas]="G4info.eqtl_gwas_number"></app-snp>
+  </section>
+</div>

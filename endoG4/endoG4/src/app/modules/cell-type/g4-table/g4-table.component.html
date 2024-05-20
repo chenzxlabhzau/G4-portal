@@ -1,0 +1,52 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </div>
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+      <ng-container matColumnDef="g_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>G4 id</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">
+          <a [routerLink]="['/detail', regions.g_id]">{{regions.g_id}}</a>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="loci">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
+        <mat-cell class="description-cell" *matCellDef="let regions">
+          <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position={{regions.chr}}:{{ regions.start }}-{{ regions.end }}&amp;hgct_customText=http://endoquad.chenzxlab.cn/static/endoG4_hg19_track_info.txt"
+             target="_blank">{{regions.chr}}:{{ regions.start|number }}-{{ regions.end|number }}:{{ regions.strand}}</a>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="group">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Confidence level</mat-header-cell>
+        <mat-cell style="padding-left: 1%" class="duration-cell" *matCellDef="let regions">
+          {{regions.group}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sample">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Sample</mat-header-cell>
+        <mat-cell  class="duration-cell" *matCellDef="let regions">
+          {{regions.sample}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cell_line">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cell line</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.cell_line }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="treat">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Treat</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.treat }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.type }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="source">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.source }}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  <mat-paginator [length]="dataSource.resultLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>

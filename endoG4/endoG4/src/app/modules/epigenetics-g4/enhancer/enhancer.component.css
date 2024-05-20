@@ -1,0 +1,18 @@
+.mat-column-loci {
+  flex: 0 0 220px;
+}
+.mat-column-group {
+  flex: 0 0 60px;
+}
+.mat-column-g_id {
+  flex: 0 0 130px;
+}
+.mat-column-peak_score {
+  flex: 0 0 110px;
+}
+.mat-column-gene_type {
+  flex: 0 0 150px;
+}
+.mat-column-group {
+  flex: 0 0 120px;
+}

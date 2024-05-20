@@ -1,0 +1,95 @@
+<div fxLayout="column" fxFill class="container">
+  <div class="column">
+    <div class="card" style="padding: 0">
+      <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		    Histone modification and chromatin accessibility at eG4 loci
+	    </div>
+      <div class="card-body"  style="text-align: justify">
+        <div class="row">
+          <div class="col-8" >
+            <div *ngIf="sample_info">
+              <p class="big" style="font-size: 16px">
+              Sample ID: {{sample_info.Sample_id}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Group: {{sample_info.Group}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Sample name: {{sample_info.sample_name}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Anatomy: {{sample_info.ANATOMY}}
+                <br>
+              Type: {{sample_info.TYPE}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Age: {{sample_info.AGE}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Sex: {{sample_info.SEX}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Under seq: {{sample_info.Under_seq}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Quality rating: {{sample_info.Quality_rating}}
+              </p>
+
+            </div>
+            <p class="big" style="font-size: 16px">TssA, Active TSS; TssAFlnk, Flanking Active TSS; TxFlnk, Transcr. at gene 5' and 3'; Tx, Strong transcription; TxWk, Weak transcription; EnhG, Genic enhancers; Enh, Enhancers; ZNF/Rpts, ZNF genes & repeats; Het, Heterochromatin; TssBiv, Bivalent/Poised TSS; BivFlnk, Flanking Bivalent TSS/Enh; EnhBiv, Bivalent Enhancer; ReprPC, Repressed PolyComb; ReprPCWk, Weak Repressed PolyComb; Quies, Quiescent/Low.</p>
+            <p class="big" style="font-size: 16px">Note: some samples are missing certain types of data</p>
+          </div>
+
+          <div class="col-4" fxFlexAlign="center">
+            <img [src]="assets + '/imgs/epi.png'" class="d-block img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding: 0;margin-top: 30px">
+      <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		    Search
+	    </div>
+      <div class="card-body">
+        <div fxLayout="column">
+          <div class="col-12" >
+            <form fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap="5%">
+              <mat-form-field appearance="standard">
+                <mat-label>Sample</mat-label>
+                <mat-select [(value)]="sample" (valueChange)="onSelectionChange($event)">
+                  <mat-option *ngFor="let sample of samples" [value]="sample">
+                    {{sample}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="standard" class="example-full-width" [color]="isLegalInput ? 'primary' : 'warn'">
+                <mat-label>Position or gene id</mat-label>
+                <input matInput placeholder="eg. chr1:10,010-10,030 or DDX11L1" [formControl]="searchFormControl" type="text" />
+              </mat-form-field>
+              <button mat-raised-button (click)="search()" style="height: 36px;background-color: #d1e5f0">
+                Search
+              </button>
+              <button mat-raised-button [disabled]="downloading" (click)="download()" style="height: 36px;background-color: #d1e5f0">
+                Download
+              </button>
+            </form>
+          </div>
+
+          <div fxFlex>
+            <mat-tab-group  mat-align-tabs="start" [(selectedIndex)]="tabIndex" dynamicHeight>
+              <mat-tab>
+                <ng-template mat-tab-label>Chromatin</ng-template>
+                <app-chrom-hmm [sl_sample]="sl_sample" [query]="query"></app-chrom-hmm>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>DHS</ng-template>
+                <app-dhs [sl_sample]="sl_sample" [query]="query"></app-dhs>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>H3K27ac</ng-template>
+                <app-enhancer [sl_sample]="sl_sample" [query]="query"></app-enhancer>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+

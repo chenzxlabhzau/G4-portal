@@ -1,0 +1,152 @@
+<div fxLayout="column" fxFill class="container">
+  <div class="card" style="padding: 0">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Predict PQS
+    </div>
+    <div class="card-body" style="text-align: justify">
+      <div class="row">
+        <div class="col-8" >
+            <p class="big" style="font-size: 16px">To enable users to predict PQSs in any sequence of interest with custom parameters, we provided the web-based program to identify PQSs based on pqsfinder (Hon et al. 2017, Labudová et al. 2020). For further research, we recommend going to pqsfinder web service (https://pqsfinder.fi.muni.cz/) for G4 prediction.
+This web application enables users to easily identify all possible G4 conformations and its easy-to-interpret scoring function is based on pqsfinder. For detailed information, please refer to the original papers
+</p>
+          <li style="font-size: 16px">Hon J, Martínek T, Zendulka J, et al. pqsfinder: an exhaustive and imperfection-tolerant search tool for potential quadruplex-forming sequences in R. Bioinformatics, 2017, 33(21): 3373-3379</li>
+          <li style="font-size: 16px">Labudová D, Hon J, Lexa M. pqsfinder web: G-quadruplex prediction using optimized pqsfinder algorithm. Bioinformatics, 2020, 36(8): 2584-2586</li>
+        </div>
+        <div class="col-4" fxFlexAlign="center">
+          <img [src]="assets + '/imgs/pg4.png'" class="d-block img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 0;margin-top: 30px">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+		  Search Option
+	  </div>
+    <div class="card-body" fxLayout="column">
+      <div fxLayout="row">
+      <dl fxFlex="50%">
+        <dt>Overlapping</dt>
+        <dd>
+          <mat-select style="width: 100px" class="form-control" [(value)]="overlapping">
+            <mat-option value="False">False</mat-option>
+            <mat-option value="True">True</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: False. If true, than overlapping PQS will be reported.">help_outline</mat-icon>
+        </dd>
+        <dt>Min score</dt>
+        <dd>
+          <mat-select style="width: 100px" class="form-control" [(value)]="min_score">
+            <mat-option *ngFor="let score of min_scores" [value]="score">{{score}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 50. Minimal score of PQS to be reported.">help_outline</mat-icon>
+        </dd>
+        <dt>Max mismatch</dt>
+        <dd>
+          <mat-select style="width: 100px" class="form-control" [(value)]="max_mismatch">
+            <mat-option *ngFor="let max_mismatch of max_mismatches" [value]="max_mismatch">{{max_mismatch}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 3. Maximal number of G-tracts containing a mismatch that represents mutation from guanine to other types of nucleotide (A, T, or C)">help_outline</mat-icon>
+        </dd>
+        <dt>Loop length</dt>
+        <dd>
+          <mat-select style="width: 70px" class="form-control" [(value)]="min_loop">
+            <mat-option *ngFor="let min_loop of min_loops" [value]="min_loop">{{min_loop}}</mat-option>
+          </mat-select>
+            <div>&nbsp; to &nbsp;</div>
+          <mat-select style="width: 70px" class="form-control" [(value)]="max_loop">
+            <mat-option *ngFor="let max_loop of max_loops" [value]="max_loop">{{max_loop}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 0 and 30. Minimal and Maximal length of each PQS inner loop.">help_outline</mat-icon>
+        </dd>
+      </dl>
+      <dl fxFlex="50%">
+        <dt>Max length</dt>
+        <dd>
+          <mat-select style="width: 100px" class="form-control" [(value)]="max_length">
+            <mat-option *ngFor="let se_length of se_lengths" [value]="se_length">{{se_length}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 50. Maximal total length of PQS.">help_outline</mat-icon>
+        </dd>
+        <dt>Max bulges</dt>
+        <dd>
+          <mat-select style="width: 100px" class="form-control" [(value)]="max_bulge">
+            <mat-option *ngFor="let max_bulge of max_bulges" [value]="max_bulge">{{max_bulge}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 3. Maximal number of G-tracts containing a bulge that represents one or more nucleotides that do not participate in the eG4 formation and instead protrude or bulge out on one side of the strand.">help_outline</mat-icon>
+        </dd>
+        <dt>Max defects</dt>
+        <dd>
+          <mat-select style="width: 100px" class="form-control" [(value)]="max_defect">
+            <mat-option *ngFor="let max_defect of max_defects" [value]="max_defect">{{max_defect}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 3. Maximum number of defects in total (#bulges + #mismatches).">help_outline</mat-icon>
+        </dd>
+        <dt>Length of G-tract</dt>
+        <dd>
+          <mat-select style="width: 70px" class="form-control" [(value)]="min_run">
+            <mat-option *ngFor="let min_run of min_runs" [value]="min_run">{{min_run}}</mat-option>
+          </mat-select>
+            <div>&nbsp; to &nbsp;</div>
+          <mat-select style="width: 70px" class="form-control" [(value)]="max_run">
+            <mat-option *ngFor="let max_run of max_runs" [value]="max_run">{{max_run}}</mat-option>
+          </mat-select>
+          <mat-icon style="padding-left: 5px" matTooltip="Default: 2 and 11. Minimal and Maximal length of each PQS tract (G-tract).">help_outline</mat-icon>
+        </dd>
+      </dl>
+      </div>
+    <div>
+      <div fxLayoutAlign="center" class="card card-body" fxLayout="column" style="margin-top: 10px" fxLayoutGap="10px">
+        <div class="input-wrapper">
+          <div class="input-left">
+            <div class="input-text-div">
+              <p class="inputText">Enter nucleic acid sequence in FASTA format or upload a file in FASTA format.</p>
+              <p class="inputText">The size of the input file is limited to 100k nucleotides</p>
+            </div>
+
+            <div class="input">
+              <textarea class="form-control" name="sequence" [(ngModel)]="seq_str" id="kasf" title="Enter nucleic acid sequences in FASTA format"   rows="10"></textarea>
+            </div>
+            <div class="spinner-container" *ngIf="uploading">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <div fxLayout="row" style="align-items: center;justify-content: flex-end">
+              <input type="file" ng2FileSelect [uploader]="uploader" />
+              <button [disabled]="uploading" mat-raised-button (click)="Analyze()"  color="warn" style="height: 36px">
+                Analyze
+              </button>
+            </div>
+          </div>
+          <div class="pqsText" style="margin-top: 60px">
+            <p class="card-text">
+              Example sequence:
+              <br>
+              >user_seq
+              <br>
+              GGGGAGGCGGGATAGGAGGCGGGGGCCCTGGGCCCTGGGCCCCGG
+              <br>
+              GCGCAGGCGCAGCGGGGTCGCAGGGCGCGGCGGGTTCCGCCCCGG
+              <br>
+              TCCGCGGAGGACCGGGCGCTGGTGCGCGCCCTGTGGAAGAAGCTG
+              <br>
+              AAAAAAAAAAAGGGGCCTCCGGGGTTAACGGGGATATAGGGCGGG
+            </p>
+            <p class="card-text">
+              Output:
+              <br>
+              nt: number of G-tetrads,
+              nb: number of bulges,
+              nm: number of mismatches,
+              rl1, rl2, rl3, ll1, ll2 and ll3 represents tract (G-tract) and loop lengths of each PQS.
+            </p>
+            <p class="card-text">
+              This web application enables users to easily identify all possible G4 conformations and its easy-to-interpret scoring function is based on pqsfinder (Hon et al. 2017) and pqsfinder web (Labudová et al. 2020). For detailed information, please refer to the original papers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+

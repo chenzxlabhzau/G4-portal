@@ -1,0 +1,14 @@
+mat-card-title{
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+.mat-column-sample {
+  white-space: normal !important;
+  word-break: break-all;
+}
+
+.reduce-width {
+  width: calc(100% - 15%);
+}
+

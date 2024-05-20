@@ -1,0 +1,41 @@
+<div class="card" style="padding: 0;margin-top: 30px">
+  <div class="card-header d-flex justify-content-between align-items-center" style="background-color:#d1e5f0;font-size: 17px">
+    Pathway of transcription factors (TFs)
+    <button dropdownToggle class="btn p-0" type="button" aria-haspopup="true" (click)="exporter.exportTable('csv')">
+      Download
+    </button>
+  </div>
+  <div class="card-body">
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+        <mat-table matTableExporter #exporter="matTableExporter" class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+          <ng-container matColumnDef="tf">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Transcription Factor</mat-header-cell>
+            <mat-cell  class="duration-cell" *matCellDef="let regions">
+              <a href="https://www.genome.jp/entry/{{regions.KO}}" target="_blank">{{regions.tf}}</a>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="pathway_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Pathway</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let regions">
+              <a href="https://www.genome.jp/pathway/{{regions.pathway_id}}" target="_blank">{{ regions.pathway_name }}</a>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="ec">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>ENZYME ID</mat-header-cell>
+            <mat-cell   class="duration-cell" *matCellDef="let regions">
+              <a *ngIf="!regions.ec.includes('-')" href="https://www.genome.jp/entry/{{regions.ec}}" target="_blank">[EC:{{regions.ec}}]</a>
+              <div matTooltip="Please note that there is currently no URL link available in the KEGG database for this ENZYME ID." *ngIf="regions.ec.includes('-')" >{{regions.ec}}</div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+
+
+      <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+    </mat-card>
+
+    <ng-template #marked> Unavailable </ng-template>
+  </div>
+</div>

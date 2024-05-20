@@ -1,0 +1,23 @@
+.example-full-width {
+  width: 300px;
+}
+.mat-tooltip {
+  white-space: pre-line;
+}
+.mat-column-Sample_id {
+  flex: 0 0 100px;
+}
+
+.mat-column-Under_seq {
+  flex: 0 0 100px;
+}
+.mat-column-Quality_rating {
+  flex: 0 0 120px;
+}
+.mat-column-sample_name {
+  flex: 0 0 180px;
+}
+.mat-column-ANATOMY {
+  white-space: normal !important;
+  word-break: break-all;
+}

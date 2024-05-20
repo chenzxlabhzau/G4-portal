@@ -1,0 +1,118 @@
+<div fxLayout="column" fxFill class="container">
+  <div class="card" style="padding: 0">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Data
+    </div>
+    <div class="card-body" style="text-align: justify">
+      <div class="row">
+        <div class="col-8" >
+            <p class="big" style="font-size: 16px">In this page, we provided the PQSs and eG4s in the genome of human, mouse, and chicken. For users' convience, we also uploaded the complete information about interaction of eG4s with epigenetic modification, transcription factors, and regulatory elements.</p>
+        </div>
+
+      </div>
+        <mat-card style="background-color: #f3f3f3;margin-top: 20px" appMaterialElevation defaultElevation="4" raisedElevation="4">
+    <div class="downloadDiv">
+      <span>1. Predicted quadruplex sequences (PQSs) </span>
+      <ul>
+        <li>
+          Predicted quadruplex sequence (PQSs) in human genome:
+          <a [href]="static + '/Predicted_human_G4.txt'" download>Predicted_human_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in mouse genome:
+          <a [href]="static + '/Predicted_mouse_G4.txt'" download>Predicted_mouse_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in pig genome:
+          <a [href]="static + '/Predicted_pig_G4.txt'" download>Predicted_pig_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in chicken genome:
+          <a [href]="static + '/Predicted_chicken_G4.txt'" download>Predicted_chicken_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in rhesus macaque genome:
+          <a [href]="static + '/Predicted_rhesus_macaque_G4.txt'" download>Predicted_rhesus_macaque_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in rat genome:
+          <a [href]="static + '/Predicted_rat_G4.txt'" download>Predicted_rat_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in rabbit genome:
+          <a [href]="static + '/Predicted_rabbit_G4.txt'" download>Predicted_rabbit_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in opossums genome:
+          <a [href]="static + '/Predicted_opossums_G4.txt'" download>Predicted_opossums_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in zebrafish genome:
+          <a [href]="static + '/Predicted_zebrafish_G4.txt'" download>Predicted_zebrafish_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in fruit fly genome:
+          <a [href]="static + '/Predicted_fruit_fly_G4.txt'" download>Predicted_fruit_fly_G4.txt</a>
+        </li>
+        <li>
+          Predicted quadruplex sequence (PQSs) in C. elegans genome:
+          <a [href]="static + '/Predicted_c._elegans_G4.txt'" download>Predicted_c._elegans_G4.txt</a>
+        </li>
+      </ul>
+    </div>
+    <div class="downloadDiv">
+      <span>2. Endogenous G4s (eG4s) </span>
+      <ul>
+        <li>
+          Genomic position, structure stability, and ID number of eG4s in human genome:
+          <a [href]="static + '/Human_eG4.txt'" download>Human_eG4.txt</a>
+        </li>
+        <li>
+          Genomic position, structure stability, and ID number of eG4s in mouse genome:
+          <a [href]="static + '/Mouse_eG4.txt'" download>Mouse_eG4.txt</a>
+        </li>
+        <li>
+          Genomic position, structure stability, and ID number of eG4s in chicken genome:
+          <a [href]="static + '/Chicken_eG4.txt'" download>Chicken_eG4.txt</a>
+        </li>
+      </ul>
+    </div>
+    <div class="downloadDiv" style="margin-bottom: 30px">
+      <span>3. eG4 regulation </span>
+      <ul>
+        <li>
+          Epigenetic modification and chromatin accessibility at eG4 loci:
+          <a [href]="static + '/endoG4_Epigenetics.gz'" download>endoG4_Epigenetics.gz</a>
+        </li>
+        <li>
+          Transcription factor binding of eG4s:
+          <a [href]="static + '/endoG4_TF.gz'" download>endoG4_TF.gz</a>
+        </li>
+        <li>
+          Overlap of eG4s with GWAS Catalog SNPs:
+          <a [href]="static + '/endoG4_GWAS_SNP.csv'" download>endoG4_GWAS_SNP.csv</a>
+        </li>
+        <li>
+          Overlap of eG4s with GTEx eQTL:
+          <a [href]="static + '/endoG4_GTEx_eQTL.csv'" download>endoG4_GTEx_eQTL.csv</a>
+        </li>
+        <li>
+          Overlap of eG4s with cancer eQTL:
+          <a [href]="static + '/endoG4_cancer_eQTL.csv'" download>endoG4_cancer_eQTL.csv</a>
+        </li>
+        <li>
+          All raw narrow peaks generated from G4 ChIP-seq/ CUT&Tag data:
+          <a [href]="static + '/narrowPeak.tar.gz'" download>narrowPeak.tar.gz</a>
+        </li>
+        <li>
+          All cell types used in the work:
+          <a [href]="static + '/Sample information.xlsx'" download>Sample information.xlsx</a>
+        </li>
+      </ul>
+    </div>
+  </mat-card>
+    </div>
+  </div>
+
+</div>
+

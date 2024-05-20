@@ -1,0 +1,54 @@
+dt::after {
+  content: ': ';
+}
+
+dl {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: medium;
+  margin-bottom: 0;
+}
+dt {
+  flex-basis: 40%;
+  padding: 2px 10px;
+  text-align: right;
+  font-weight: 500;
+  font-size: medium;
+}
+dd {
+  display: flex;
+  align-items: center;
+  flex-basis: 60%;
+  flex-grow: 1;
+  margin: 0;
+  padding: 2px 10px;
+
+}
+/*.form-control{*/
+/*  width: 40%;*/
+/*}*/
+textarea {
+  width: 100%;
+}
+.input-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 50px;
+    min-width: 690px;
+}
+.input-left {
+    display: grid;
+    grid-row-gap: 20px;
+}
+.card.input {
+    min-width: 800px !important;
+}
+p.inputText {
+    margin: 0;
+    text-align: justify;
+}
+.pqsText {
+    /* margin-top : 20px; */
+    text-align: justify;
+}

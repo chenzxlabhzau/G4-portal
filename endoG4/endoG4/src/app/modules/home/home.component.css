@@ -1,0 +1,14 @@
+
+img {
+  width: 100%;
+}
+.mat-card-image:first-child{
+  margin-top: 0;
+}
+.pic {
+    margin: 5px 30px 15px 30px !important;
+}
+area {
+  display: block;
+  cursor: pointer;
+}

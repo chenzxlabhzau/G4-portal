@@ -1,0 +1,60 @@
+<header style="box-shadow: 0 0 10px #999999;">
+  <div>
+    <img width="100%" [src]="assets + '/imgs/header.png'" alt="">
+  </div>
+  <nav class="navbar navbar-expand-sm" style="font-size:20px">
+    <ul class="navbar-nav justify-content-around w-100">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="navactive"  [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/group-g4" routerLinkActive="navactive">
+          eG4-Level
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cell-type" routerLinkActive="navactive">
+          eG4-CellType
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/epigenetics" routerLinkActive="navactive">
+          eG4-Epigenetics
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/tf-g4" routerLinkActive="navactive">
+          eG4-TF
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/eqtl-g4" routerLinkActive="navactive">
+          eG4-SNP/eQTL
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/predicted-g4" routerLinkActive="navactive" >
+          Predicted G4
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/prediction" routerLinkActive="navactive">
+          Prediction
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/download" routerLinkActive="navactive">
+          Download
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/help" routerLinkActive="navactive">
+          Help
+        </a>
+      </li>
+      </ul>
+  </nav>
+</header>

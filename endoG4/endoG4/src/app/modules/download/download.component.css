@@ -1,0 +1,36 @@
+th{
+  border-color: white
+}
+td{
+  border-color: white
+}
+.table td {
+text-align: center;
+}
+.table th {
+text-align: center;
+}
+.downloadDiv {
+    width: 1062px;
+    margin: 50px auto 0 auto;
+}
+.downloadDiv span {
+    font-family:"Microsoft YaHei";
+    font-size: large;
+    font-weight: bold;
+}
+.downloadDiv ul {
+    font-family:"Microsoft YaHei";
+    font-size: large;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.downloadDiv ul li {
+    font-family:"Microsoft YaHei";
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+a {
+  text-decoration: underline;
+}
+/*#c0c0c0*/

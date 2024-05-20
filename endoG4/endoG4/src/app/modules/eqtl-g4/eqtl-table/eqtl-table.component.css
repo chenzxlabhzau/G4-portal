@@ -1,0 +1,30 @@
+.mat-column-g_id {
+  flex: 0 0 130px;
+}
+.mat-column-loci {
+  flex: 0 0 220px;
+}
+.mat-column-cloci {
+  flex: 0 0 120px;
+}
+.mat-column-rsid {
+  flex: 0 0 130px;
+}
+.mat-column-score {
+  flex: 0 0 50px;
+}
+.mat-column-new_score {
+  flex: 0 0 65px;
+}
+.mat-column-group {
+  flex: 0 0 110px;
+}
+.mat-column-allele {
+  white-space: normal !important;
+  word-break: break-all;
+  flex: 0 0 70px;
+}
+.mat-column-phenotype {
+  white-space: normal !important;
+  word-break: break-all;
+}

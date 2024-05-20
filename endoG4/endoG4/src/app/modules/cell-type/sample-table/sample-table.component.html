@@ -1,0 +1,47 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <mat-form-field style="width: 300px;">
+    <mat-label>Query</mat-label>
+    <input matInput placeholder="Ex. K562" (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+    <ng-container matColumnDef="sample">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Sample name</mat-header-cell>
+      <mat-cell class="description-cell" *matCellDef="let sample">
+        <a href="javascript:void(0);" (click)="sampleSelection(sample.sample)">{{ sample.sample }}</a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cell_line">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cell line</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">{{ sample.cell_line }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="treat">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Treat</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">
+        {{ sample.treat }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">{{ sample.type }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="source">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">{{ sample.source }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="gse">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GSE</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">
+        <a *ngIf="sample.gse!='GSE133379，GSE178668'" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{sample.gse}}">{{sample.gse}}</a>
+        <a *ngIf="sample.gse=='GSE133379，GSE178668'" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{sample.gse.split(', ')[0]}}">{{sample.gse.split(', ')[0]}}</a>,
+        <a *ngIf="sample.gse=='GSE133379，GSE178668'" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{sample.gse.split(', ')[1]}}">{{sample.gse.split(', ')[1]}}</a>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>

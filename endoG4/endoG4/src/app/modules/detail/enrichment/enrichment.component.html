@@ -1,0 +1,23 @@
+<div *ngIf="sample_num>4" class="card" style="padding: 0;margin-top: 30px">
+  <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+    KEGG and GO enrichment of transcription factors (TFs)
+  </div>
+  <div class="card-body">
+    <div fxFlex="grow" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" class="overview">
+      <mat-card fxFlex="50%" appMaterialElevation defaultElevation="4" raisedElevation="4">
+          <highcharts-chart *ngIf="KEGG"
+            [Highcharts]="Highcharts"
+            [options]="KEGG"
+            style="width: 100%; height: 400px; display: block;">
+          </highcharts-chart>
+      </mat-card>
+      <mat-card fxFlex="50%" appMaterialElevation defaultElevation="4" raisedElevation="4">
+          <highcharts-chart *ngIf="GO"
+            [Highcharts]="Highcharts"
+            [options]="GO"
+            style="width: 100%; height: 400px; display: block;">
+          </highcharts-chart>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.example-full-width {
+  width: 300px;
+}
+.mat-column-tf {
+  flex: 0 0 140px;
+}
+.mat-column-g_id {
+  flex: 0 0 110px;
+}
+.mat-column-score {
+  flex: 0 0 60px;
+}
+.mat-column-tfloci {
+  flex: 0 0 220px;
+  white-space: normal !important;
+  word-break: break-all;
+}
+.mat-column-loci {
+  flex: 0 0 220px;
+  white-space: normal !important;
+  word-break: break-all;
+}
+
+.mat-column-match_seq {
+  white-space: normal !important;
+  word-break: break-all;
+}

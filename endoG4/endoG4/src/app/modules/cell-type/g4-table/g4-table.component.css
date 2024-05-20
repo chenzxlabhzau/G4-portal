@@ -1,0 +1,16 @@
+.mat-column-loci {
+  flex: 0 0 220px;
+}
+.mat-column-group {
+  flex: 0 0 120px;
+}
+.mat-column-treat {
+  flex: 0 0 100px;
+}
+.mat-column-type {
+  flex: 0 0 90px;
+}
+.mat-column-sample {
+  word-break: break-all;
+  flex: 0 0 200px;
+}

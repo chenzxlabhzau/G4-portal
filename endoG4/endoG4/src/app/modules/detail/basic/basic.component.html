@@ -1,0 +1,25 @@
+<div *ngIf="g4info" fxLayout="column">
+  <div fxLayout="row">
+    <dl fxFlex="40%">
+      <dt>G4 id</dt><dd>{{g4info.g_id}}</dd>
+      <dt>Length</dt><dd> {{g4info.size|number}} bp </dd>
+      <dt>Closest gene id</dt><dd><div [innerHTML]="g4info.gene_id | GeneUrl"></div></dd>
+      <dt>Gene type</dt><dd>{{g4info.gene_type}}</dd>
+      <dt>Confidence level</dt><dd>{{g4info.group}}</dd>
+      <dt>Phastcons</dt><dd>{{g4info.phastCons}}</dd>
+      <dt *ngIf="isshow">GWAS SNP number</dt><dd *ngIf="isshow">{{g4info.eqtl_gwas_number|number}}</dd>
+      <dt *ngIf="isshow">Cancer eQTL number</dt><dd *ngIf="isshow">{{g4info.eqtl_cancer_number|number}}</dd>
+    </dl>
+    <dl fxFlex="40%">
+      <dt>Position</dt><dd><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position={{g4info.chr}}:{{ g4info.start }}-{{ g4info.end }}&amp;hgct_customText=http://endoquad.chenzxlab.cn/static/endoG4_hg19_track_info.txt"
+             target="_blank">{{g4info.chr}}:{{ g4info.start|number }}-{{ g4info.end|number }}:{{ g4info.strand}}</a></dd>
+      <dt>Structural score</dt><dd>{{g4info.score|number}}</dd>
+      <dt>Closest gene symbol</dt><dd>{{g4info.gene_name}}</dd>
+      <dt>Distance</dt><dd>{{g4info.distance|number}} bp</dd>
+      <dt>Number of detected</dt><dd>{{g4info.sample_number|number}}</dd>
+      <dt>PhyloP</dt><dd>{{g4info.phyloP}}</dd>
+      <dt *ngIf="isshow">GTEx eQTL number</dt><dd *ngIf="isshow">{{g4info.eqtl_gtex_number|number}}</dd>
+    </dl>
+  </div>
+  <dl><dt style="flex-basis: 20%;">G4 sequence</dt><dd style="flex-basis: 80%;"><div [innerHTML]="g4info.seq | G4Seq:g4info.rl1:g4info.rl2:g4info.rl3:g4info.ll1:g4info.ll2:g4info.ll3:g4info.strand"></div></dd></dl>
+</div>

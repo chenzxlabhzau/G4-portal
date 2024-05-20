@@ -1,0 +1,155 @@
+<div fxLayout="column" fxFill class="container">
+  <div fxFlex="none">
+    <h2><font style="font-size:25px">Help</font></h2>
+  </div>
+  <div fxLayout="column" fxFlex class="not-float" fxLayoutGap="10px">
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Contact</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>Zhen-Xia Chen, Ph.D., Professor</h3>
+        <canvas #canvasEl height="30px"></canvas>
+        <p class="card-text"><a href="https://lab.rjmart.cn/10139/chenzxlab">Chen Lab</a></p>
+        <p>Hubei Hongshan Laboratory, College of Biomedicine and Health, Huazhong Agricultural University, Wuhan 430070, PR China</p>
+        <p>Hubei Key Laboratory of Agricultural Bioinformatics, College of Life Science and Technology, Huazhong Agricultural University, Wuhan 430070, PR China</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Citation</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p style="margin-top: 9px"><a href="https://doi.org/10.1093/nar/gkad966">EndoQuad: a comprehensive genome-wide experimentally validated endogenous G-quadruplex database.</a></p>
+        <p>Sheng Hu Qian, Meng-Wei Shi, Yu-Li Xiong, Yuan Zhang, Ze-Hao Zhang, Xue-Mei Song, Xin-Yin Deng, Zhen-Xia Chen*</p>
+        <p><i>Nucleic Acids Research</i>, 2023: gkad966. <a href="https://doi.org/10.1093/nar/gkad966" target="_blank">https://doi.org/10.1093/nar/gkad966</a></p>
+
+      </mat-card-content>
+    </mat-card>
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Introduction</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          G-quadruplexes (G4s) are four-stranded non-B DNA structures
+              formed in Guanine-rich regions, emerging as the key regulators in gene expression
+              regulation and playing critical roles in development, disease, and tumorigenesis.
+              However, a comprehensive identification of endogenous G4s (eG4s) is still lacking
+              and thus systematic characterization of eG4s in the genome often use predicted
+              quadruplex sequences (PQSs) an alternative. Sporadic studies provided a wealth
+              of G4 ChIP-seq data or experimentally validated eG4s with limited number,
+              however, none collects complete information about eG4s in the genome.
+              To this end, we collected all public available G4 ChIP-seq (1,180) and G4 CUT&Tag
+              (27) samples and acquired 808 Tb data from human, mouse, and chicken,
+              including 45 tissues/cell lines. These data resulted in a total of 391,503, 71,791, and 45,044
+              eG4s in humans, mice, and chicken,
+              respectively. To help the researchers easily browse and
+              access the data, we developed a comprehensive and interactive
+              EndoQuad web resource. In this database, the users can query the histone
+              modification of eG4s, the interplay between eG4s and Transcription factors,
+              and colocolization of eG4s with disease/cancer associated SNPs/eQTLs.
+              The EndoQuad data and resulting principle provided here could serve as a
+              valuable resource for understanding the function of eG4s and further
+              exploring their regulatory mechanisms and advancing the identification
+              of therapeutic targets.
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <app-version></app-version>
+    <app-statistics></app-statistics>
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Function modules</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+              <ol>
+                <li><strong>eG4-Group</strong>: In this module, users can browse eG4s
+                  using gene id or chromosome location. The detailed
+                  information of each eG4 was exhibited, including length,
+                  structural stability, group, conservations (PhastCons, PhyloP),
+                  and its closest gene.
+                  In the right panel, User can specify a region to search.</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/group.png'" alt="">
+                <li><strong>eG4-Epigenetics</strong>: Users can explore the histone modification and chromatin
+                  accessibility proximal to eG4s by interest samples. </li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/epigenetics.png'" alt="">
+                <li><strong>eG4-TF</strong>: In this section, we analyzed the regulation of transcription
+                  factors (TFs) at eG4 loci and provided the binding sites of each TF.</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/TF.png'" alt="">
+                <li><strong>eG4-SNP/eQTL</strong>: In this module, we showed the co-localization of eG4s with
+                  disease-associated SNPs and potentially regulatory eQTL in normal and cancer text.</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/snp.png'" alt="">
+                <li><strong>Predicted G4</strong>: Users can browse all G4s predicted by pqsfinder.</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/predicted.png'" alt="">
+                <li><strong>Prediction</strong>: Users can  predict PQSs in the any sequence of interest with custom parameters.</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/prediction.png'" alt="">
+              </ol>
+      </mat-card-content>
+    </mat-card>
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Data collection and process</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>Data collection</h3>
+        <p>
+          To profile the native eG4s, we performed an in situ eG4 mapping method, G4 CUT&Tag.
+          Briefly, we purified the eG4 structure-specific scFv antibody BG4 and combined BG4
+          with Tn5-based CUT&Tag approach. In this protocol, eG4 structures are specifically
+          recognized by BG4 in situ and eG4-containing DNA fragments are cut and released by
+          Tn5 transposome-assisted tagmentation. To exhaustively identify eG4s
+          and generate a comprehensive compendium of eG4s across mammals, we searched “Quadruplex”
+          for all public G4 ChIP-seq and Cut&Tag data (N = 1207) from
+          <a href="https://www.ncbi.nlm.nih.gov/gds" target="_blank">NCBI GEO DataSets</a> and
+          <a href="https://www.ebi.ac.uk/" target="_blank">EMBL-EBI</a>.
+          We extracted metadata information of ChIP-seq samples.
+        </p>
+        <div fxLayout="row" style="justify-content: center">
+          <img  style="width: 500px;margin-left: 0px;" [src]="assets + '/imgs/pipeline.png'" alt="">
+        </div>
+        <h3>Data processing</h3>
+        <ol>
+          <li>Quality control: raw fastq data was extracted from sra using fastq-dump. FastQC (v0.11.9)
+            and Trim Galore (v0.6.0) was used to quality control and to get clean data, respectively. </li>
+          <li>
+            Alignment and Extraction of high-quality reads: We applied bowtie2 (v2.3.5.1)
+            to read alignment for ChIP-seq and ATAC-seq samples and HISAT2 (v2.1.0) to quantification
+            of RNA-seq data. Genome and annotation files for human and mouse were downloaded from GENCODE
+            with the version of hg19 and mm10, respectively. Genome and annotation files for chicken were downloaded from ENSEMBL (v104). For precise quantification and analysis, we only retained
+            high-quality reads with the mapping scores (MAPQ) higher than 20 by SAMtools view (v1.3.1,
+            options: -Sb -q 20)
+          </li>
+          <li>
+            Peak calling and quantification: After the filtering, for ChIP-seq and ATAC-seq data,
+            duplicates were marked and removed using <a href="http://broadinstitute.github.io/picard/" target="_blank">
+            Picard MarkDuplicates (v2.25.7)</a>,
+            and genomic regions (“peaks”) of signal
+            enrichment were called for each sample using MACS2 (v2.2.7.1) subcommand callpeak.
+            For data with biological replicates, peak regions were considered positive if confirmed
+            at least two replicates. All human-confirmed peaks were concatenated. For RNA-seq data,
+            gene level expression were calculated using featureCounts (v2.0.3) and measured using
+            transcripts per kilobase million (TPM).
+          </li>
+          <li>
+            Download of public data: Epigenomics data from NIH Roadmap Project were obtained
+            from the <a href="http://egg2.wustl.edu/roadmap/" target="_blank">data portal</a>. Transcription factor (TF)
+            enrichment analysis were obtained from <a href="https://chip-atlas.org/" target="_blank">ChIP-ATLAS</a>.
+            The detailed location of TFs were downloaded from <a href="https://gtrd.biouml.org/" target="_blank">GTRD</a>.
+            <a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg19/phastCons100way/hg19.100way.phastCons.bw" target="_blank">
+              The 100-way phastCons</a>
+            and <a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg19/phyloP100way/hg19.100way.phyloP100way.bw" target="_blank">
+            phyloP</a> files
+            were downloaded from UCSC genome browser. List of GWAS SNPs was downloaded from the National Human Genome
+            Research Institute's (NHGRI) <a href="https://www.ebi.ac.uk/gwas/" target="_blank">GWAS catalog</a>. The data about eQTLs in normal
+            tissues was obtained from <a href="https://gtexportal.org/home/" target="_blank">GTEx</a> and eQTLs in tumors acorss 33 cancer
+            types were downloaded from <a href="http://bioinfo.life.hust.edu.cn/PancanQTL/" target="_blank">PancanQTL</a>.
+          </li>
+        </ol>
+
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
+

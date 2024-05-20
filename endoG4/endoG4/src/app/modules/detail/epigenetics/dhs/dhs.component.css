@@ -1,0 +1,20 @@
+.mat-column-sample {
+  flex: 0 0 150px;
+}
+
+.mat-column-peak_score {
+  flex: 0 0 100px;
+}
+.mat-column-signalValue {
+  flex: 0 0 100px;
+}
+.mat-column-epi_loci {
+  flex: 0 0 250px;
+}
+.mat-column-overlap {
+  flex: 0 0 150px;
+}
+.mat-column-match_seq {
+  white-space: normal !important;
+  word-break: break-all;
+}

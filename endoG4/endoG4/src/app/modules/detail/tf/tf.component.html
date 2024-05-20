@@ -1,0 +1,35 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+      <ng-container matColumnDef="tf">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Transcription Factor</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">
+          <a href="https://www.genecards.org/cgi-bin/carddisp.pl?gene={{regions.tf}}" target="_blank">{{regions.tf}}</a>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="tfloci">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>TF Position</mat-header-cell>
+        <mat-cell class="description-cell" *matCellDef="let regions">
+          <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position={{regions.tg_chr}}:{{ regions.tg_start }}-{{ regions.tg_end }}&hgct_customText=http://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position={{regions.tg_chr}}:{{ regions.tg_start }}-{{ regions.tg_end }}&hgct_customText=track%20type=bigBed%20name=%22Endogenous%20G4%20(hg19)%22%20visibility=%22dense%22%20color=%220,107,83%22%20bigDataUrl=%22http://endoquad.chenzxlab.cn/static/Human_eG4.bb%22%0Atrack%20type=bigBed%20name=%22Predicted%20G4%20(hg19)%22%20visibility=%22dense%22%20color=%227,92,124%22%20bigDataUrl=%22http://endoquad.chenzxlab.cn/static/Predicted_human_G4.bb%22%0Atrack%20type=bigBed%20name=%22{{regions.tf}}%22%20visibility=%22dense%22%20color=%227,110,9%22%20bigDataUrl=%22https://endoquad.chenzxlab.cn/static/TFbigwig/{{regions.tf}}.bb%22"
+             target="_blank">{{regions.tg_chr}}:{{ regions.tg_start|number }}-{{ regions.tg_end|number }}</a>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="score">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Score</mat-header-cell>
+        <mat-cell   class="duration-cell" *matCellDef="let regions">
+          {{regions.score|number}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="match_seq">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Match Seq</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let regions">{{ regions.match_seq }}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>
+
+<ng-template #marked> Unavailable </ng-template>

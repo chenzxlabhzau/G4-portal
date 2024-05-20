@@ -1,0 +1,53 @@
+<div class="card" style="padding: 0;margin-top: 30px">
+  <div class="card-header d-flex justify-content-between align-items-center" style="background-color:#d1e5f0;font-size: 17px">
+    Information of samples where the eG4 is detected
+    <button dropdownToggle class="btn p-0" type="button" aria-haspopup="true" (click)="exporter.exportTable('csv')">
+      Download
+    </button>
+  </div>
+  <div class="card-body">
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+    <mat-table matTableExporter #exporter="matTableExporter" class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+      <!-- Position Column -->
+      <!-- Position Column -->
+      <ng-container matColumnDef="sample">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Sample name</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let element">
+          <div class="reduce-width">{{element.sample}}</div>
+        </mat-cell>
+      </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cell_line">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cell line</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let element">
+          {{element.cell_line}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="treat">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Condition</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let element">
+          {{element.treat}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="source">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Source</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let element">
+          {{element.source}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="gse">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>GSE</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let element">
+          <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{element.gse}}">{{element.gse}}</a>
+        </mat-cell>
+      </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator  [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+    </mat-card>
+  </div>
+</div>

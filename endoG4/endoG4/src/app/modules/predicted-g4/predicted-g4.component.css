@@ -1,0 +1,24 @@
+.example-full-width {
+  width: 300px;
+}
+.mat-column-loci {
+  flex: 0 0 220px;
+}
+.mat-column-size {
+  flex: 0 0 55px;
+}
+.mat-column-score {
+  flex: 0 0 50px;
+}
+.mat-column-phastCons {
+  flex: 0 0 80px;
+}
+.mat-column-phyloP {
+  flex: 0 0 70px;
+}
+.mat-column-group {
+  flex: 0 0 110px;
+}
+.mat-column-seq {
+  flex: 0 0 70px;
+}

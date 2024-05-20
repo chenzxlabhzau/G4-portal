@@ -1,0 +1,58 @@
+<div fxLayout="column" fxFill class="container">
+  <div class="card" style="padding: 0">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Tissues or cell lines in which eG4s were detected
+    </div>
+    <div class="card-body" style="text-align: justify">
+      <div class="row">
+        <div class="col-8" >
+            <p class="big" style="font-size: 16px">This page allows users to browse the source (tissues or cell lines) in which eG4s were detected. It also provides information on the tissue or cell line, treatment (e.g. PDS) and type (normal or cancer).</p>
+        </div>
+        <div class="col-4" fxFlexAlign="center">
+          <img style="margin-top: -15px" [src]="assets + '/imgs/eg4.png'" class="d-block img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="padding: 0;margin-top: 30px">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Search
+    </div>
+    <div class="card-body">
+      <div fxLayout="column">
+        <div class="col-12" >
+          <form fxLayout="row"  fxLayoutAlign="start center" fxLayoutGap="5%">
+            <mat-form-field appearance="standard">
+              <mat-label>Sample</mat-label>
+              <mat-select [(value)]="sample">
+                <mat-option *ngFor="let sample of samples" [value]="sample">
+                  {{sample}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="standard" class="example-full-width">
+              <mat-label>Position or gene id</mat-label>
+              <input matInput placeholder="eg. chr1:10,010-10,030 or DDX11L1" [formControl]="searchFormControl" type="text" />
+            </mat-form-field>
+            <button mat-raised-button (click)="search()" style="height: 36px;background-color: #d1e5f0">
+              Search
+            </button>
+            <button mat-raised-button [disabled]="downloading" (click)="download()" style="height: 36px;background-color: #d1e5f0">
+              Download
+            </button>
+          </form>
+        </div>
+        <app-g4-table [sl_sample]="sl_sample" [query]="query"></app-g4-table>
+      </div>
+
+    </div>
+  </div>
+  <div class="card" style="padding: 0;margin-top: 30px">
+    <div class="card-header" style="background-color:#d1e5f0;font-size: 17px">
+      Sample information
+    </div>
+    <div class="card-body">
+      <app-sample-table ($selectsample)="sampleselect($event)"></app-sample-table>
+    </div>
+  </div>
+</div>
